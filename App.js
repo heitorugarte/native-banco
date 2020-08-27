@@ -1,11 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import React from "react";
+import { StyleSheet, View, StatusBar as Statusbar } from "react-native";
+import { StartScreen } from "./features/start_screen/StartScreen";
+import { HomeScreen } from "./features/home_screen/HomeScreen";
+import { TransferScreen } from "./features/transfer_screen/TransferScreen";
+import { ExtractScreen } from "./features/extract_screen/ExtractScreen";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <ExtractScreen />
       <StatusBar style="auto" />
     </View>
   );
@@ -13,9 +17,9 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
+    paddingTop: Statusbar.currentHeight,
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    backgroundColor: "#00DF74",
+    justifyContent: "flex-end"
+  }
 });
