@@ -5,11 +5,12 @@ import { StartScreen } from "./features/start_screen/StartScreen";
 import { HomeScreen } from "./features/home_screen/HomeScreen";
 import { TransferScreen } from "./features/transfer_screen/TransferScreen";
 import { ExtractScreen } from "./features/extract_screen/ExtractScreen";
+import { PaymentScreen } from "./features/payment_screen/PaymentScreen";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <ExtractScreen />
+      <StartScreen />
       <StatusBar style="auto" />
     </View>
   );

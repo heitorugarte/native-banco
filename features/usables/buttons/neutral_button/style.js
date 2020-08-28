@@ -1,0 +1,23 @@
+import { StyleSheet } from "react-native";
+
+export const neutralButtonStyle = StyleSheet.create({
+  btnNeutral: {
+    height: 48,
+    borderRadius: 10,
+    padding: 5,
+    margin: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "lightgray",
+    shadowColor: "rgba(0,0,0, .4)",
+    shadowOffset: { height: 1, width: 1 },
+    shadowOpacity: 1,
+    shadowRadius: 1,
+    elevation: 2
+  },
+  btnNeutralText: {
+    fontSize: 18,
+    color: "black",
+    fontWeight: "bold"
+  }
+});

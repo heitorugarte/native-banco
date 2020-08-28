@@ -1,103 +1,46 @@
-import {
-  Text,
-  View,
-  TouchableOpacity,
-  TextInput,
-  Picker,
-  Modal,
-  ScrollView,
-  Image
-} from "react-native";
+import { Text, View, Modal, ScrollView } from "react-native";
 import React from "react";
 import { transferScreenStyle } from "./style.js";
-import DateTimePicker from "@react-native-community/datetimepicker";
-
-var show = false;
+import { TopBar } from "../usables/top_bar/TopBar";
+import { TextInputField } from "../usables/field_labels/text_field/TextInputField";
+import { PickerInputField } from "../usables/field_labels/picker_field/PickerInputField";
+import { DateInputField } from "../usables/field_labels/date_field/DateInputField";
+import { PositiveButton } from "../usables/buttons/positive_button/PositiveButton";
+import { NegativeButton } from "../usables/buttons/negative_button/NegativeButton";
+import { NeutralButton } from "../usables/buttons/neutral_button/NeutralButton";
+import { AuxiliarButton } from "../usables/buttons/auxiliar_button/AuxiliarButton";
 
 export const TransferScreen = props => {
   return (
     <ScrollView>
       <View style={transferScreenStyle.container}>
         <View style={transferScreenStyle.cardView}>
-          <View style={transferScreenStyle.topBarView}>
-            <TouchableOpacity style={transferScreenStyle.btnBack}>
-              <Image
-                source={require("../../assets/back.png")}
-                style={transferScreenStyle.backIcon}
-              />
-            </TouchableOpacity>
-            <Text style={transferScreenStyle.cardTitle}>Transferência</Text>
-          </View>
+          <TopBar title="Transferência" />
         </View>
         <View style={transferScreenStyle.cardView}>
-          <View style={transferScreenStyle.fieldView}>
-            <Text style={transferScreenStyle.fieldLabel}>Destino:</Text>
-            <Picker
-              style={transferScreenStyle.picker}
-              selectedValue={"Conta BizuBank"}
-            >
-              <Picker.Item label="Conta BizuBank" value="Conta BizuBank" />
-              <Picker.Item label="Outro Banco" value="Outro Banco" />
-            </Picker>
-          </View>
-          <View style={transferScreenStyle.fieldView}>
-            <Text style={transferScreenStyle.fieldLabel}>Identificador:</Text>
-            <TextInput
-              placeholder=""
-              style={transferScreenStyle.textInput}
-              maxLength={32}
-            />
-          </View>
-          <View style={transferScreenStyle.fieldView}>
-            <Text style={transferScreenStyle.fieldLabel}>Favorecido:</Text>
-            <TextInput
-              placeholder=""
-              style={transferScreenStyle.textInput}
-              maxLength={32}
-            />
-          </View>
-          <View style={transferScreenStyle.fieldView}>
-            <Text style={transferScreenStyle.fieldLabel}>Descrição:</Text>
-            <TextInput
-              placeholder=""
-              style={transferScreenStyle.textInput}
-              maxLength={25}
-            />
-          </View>
-          <View style={transferScreenStyle.fieldView}>
-            <Text style={transferScreenStyle.fieldLabel}>Valor:</Text>
-            <TextInput
-              placeholder=""
-              style={transferScreenStyle.textInput}
-              keyboardType="number-pad"
-            />
-          </View>
-          <View style={transferScreenStyle.fieldView}>
-            <Text style={transferScreenStyle.fieldLabel}>Data:</Text>
-            <View style={transferScreenStyle.dateFieldView}>
-              <Text
-                style={transferScreenStyle.textInput}
-                onPress={function() {
-                  show = true;
-                }}
-              ></Text>
-              {show ? (
-                <DateTimePicker
-                  value={new Date()}
-                  display="default"
-                  onChange={() => {}}
-                />
-              ) : null}
-            </View>
-          </View>
+          <PickerInputField
+            label="Destino:"
+            selectedValue={""}
+            onValueChange={() => {}}
+            pickerOptions={[
+              { label: "Conta BizuBank", value: "Conta BizuBank" },
+              { label: "Outro Banco", value: "Outro Banco" }
+            ]}
+          />
+          <TextInputField label="Identificador:" maxLength={32} />
+          <TextInputField label="Favorecido:" maxLength={32} />
+          <TextInputField label="Descrição:" maxLength={25} />
+          <TextInputField
+            label="Valor:"
+            maxLength={32}
+            keyboardType="number-pad"
+          />
+          <DateInputField label="Data:" />
         </View>
+
         <View style={transferScreenStyle.cardView}>
-          <TouchableOpacity style={transferScreenStyle.btnPrimaryPositive}>
-            <Text style={transferScreenStyle.btnPrimaryText}>Transferir</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={transferScreenStyle.btnPrimaryNegative}>
-            <Text style={transferScreenStyle.btnPrimaryText}>Cancelar</Text>
-          </TouchableOpacity>
+          <PositiveButton label="Transferir" onPress={() => {}} />
+          <NegativeButton label="Cancelar" onPress={() => {}} />
         </View>
         <ModalReviewDetalhes visible={false} />
         <ModalComprovante
@@ -141,12 +84,8 @@ const ModalReviewDetalhes = props => {
                 {new Date().toDateString()}
               </Text>
             </View>
-            <TouchableOpacity style={transferScreenStyle.btnPrimaryPositive}>
-              <Text style={transferScreenStyle.btnPrimaryText}>Confirmar</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={transferScreenStyle.btnPrimaryNeutral}>
-              <Text style={transferScreenStyle.btnPrimaryText}>Voltar</Text>
-            </TouchableOpacity>
+            <PositiveButton label="Confirmar" onPress={() => {}} />
+            <NeutralButton label="Voltar" onPress={() => {}} />
           </View>
         </View>
       </View>
@@ -199,12 +138,8 @@ const ModalComprovante = props => {
           </View>
         </View>
         <View style={transferScreenStyle.cardView}>
-          <TouchableOpacity style={transferScreenStyle.btnPrimaryPositive}>
-            <Text style={transferScreenStyle.btnPrimaryText}>Concluir</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={transferScreenStyle.btnAuxiliar}>
-            <Text style={transferScreenStyle.btnPrimaryText}>Compartilhar</Text>
-          </TouchableOpacity>
+          <PositiveButton label="Concluir" onPress={() => {}} />
+          <AuxiliarButton label="Compartilhar" onPress={() => {}} />
         </View>
       </View>
     </Modal>

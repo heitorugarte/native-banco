@@ -1,16 +1,19 @@
-import { Text, View, TouchableOpacity, Image, FlatList } from "react-native";
+import { Text, View, TouchableOpacity, Image, ScrollView } from "react-native";
 import React from "react";
 import { homeScreenStyle } from "./style.js";
+import { BalanceView } from "../usables/balance_view/BalanceView";
 
 const components = [HeaderView, OperationsView, BottomView];
 
 export const HomeScreen = props => {
   return (
-    <View style={homeScreenStyle.container}>
-      <HeaderView />
-      <OperationsView />
-      <BottomView />
-    </View>
+    <ScrollView>
+      <View style={homeScreenStyle.container}>
+        <HeaderView />
+        <OperationsView />
+        <BottomView />
+      </View>
+    </ScrollView>
   );
 };
 
@@ -18,16 +21,7 @@ const HeaderView = props => {
   return (
     <View style={homeScreenStyle.headerView}>
       <Text style={homeScreenStyle.greetingsText}>Olá, usuário.</Text>
-      <View style={homeScreenStyle.saldoView}>
-        <Text style={homeScreenStyle.saldoLabelText}>Seu saldo:</Text>
-        <Text style={homeScreenStyle.saldoText}>R$ 1.709,65 </Text>
-        <TouchableOpacity style={homeScreenStyle.btnHideSaldo}>
-          <Image
-            source={require("../../assets/hideIcon.png")}
-            style={homeScreenStyle.hideIcon}
-          />
-        </TouchableOpacity>
-      </View>
+      <BalanceView saldo={1709.64} />
     </View>
   );
 };

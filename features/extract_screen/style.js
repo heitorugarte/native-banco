@@ -8,24 +8,6 @@ export const extractScreenStyle = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center"
   },
-  topBarView: {
-    flexDirection: "row",
-    alignItems: "center",
-    width: "100%",
-    justifyContent: "center"
-  },
-  btnBack: {
-    position: "absolute",
-    left: 0,
-    borderWidth: 1,
-    borderColor: "gray",
-    borderRadius: 360,
-    padding: 5
-  },
-  backIcon: {
-    width: 30,
-    height: 30
-  },
   cardView: {
     width: "90%",
     borderRadius: 10,
@@ -50,6 +32,9 @@ export const extractScreenStyle = StyleSheet.create({
     backgroundColor: "white",
     justifyContent: "center",
     alignItems: "center"
+  },
+  btnFiltrosView: {
+    flexDirection: "row"
   },
   cardRowView: {
     width: "98%",
@@ -95,49 +80,6 @@ export const extractScreenStyle = StyleSheet.create({
     textAlign: "center",
     color: "#3B4A3F"
   },
-  btnPrimaryPositive: {
-    width: "90%",
-    height: 48,
-    borderRadius: 10,
-    margin: 10,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#11DD74",
-    shadowColor: "rgba(0,0,0, .4)",
-    shadowOffset: { height: 1, width: 1 },
-    shadowOpacity: 1,
-    shadowRadius: 1,
-    elevation: 2
-  },
-  btnPrimaryNegative: {
-    width: "90%",
-    height: 48,
-    borderRadius: 10,
-    margin: 10,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "red",
-    shadowColor: "rgba(0,0,0, .4)",
-    shadowOffset: { height: 1, width: 1 },
-    shadowOpacity: 1,
-    shadowRadius: 1,
-    elevation: 2
-  },
-  btnPrimaryNeutral: {
-    width: "90%",
-    height: 48,
-    borderRadius: 10,
-    padding: 5,
-    margin: 10,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "lightgray",
-    shadowColor: "rgba(0,0,0, .4)",
-    shadowOffset: { height: 1, width: 1 },
-    shadowOpacity: 1,
-    shadowRadius: 1,
-    elevation: 2
-  },
   btnAuxiliar: {
     width: "90%",
     height: 48,
@@ -151,16 +93,6 @@ export const extractScreenStyle = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 1,
     elevation: 2
-  },
-  btnPrimaryText: {
-    fontSize: 18,
-    color: "white",
-    fontWeight: "bold"
-  },
-  btnNeutralText: {
-    fontSize: 18,
-    color: "black",
-    fontWeight: "bold"
   },
   boldMediumText: {
     fontSize: 15,

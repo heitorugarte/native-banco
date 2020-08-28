@@ -1,47 +1,22 @@
-import {
-  Text,
-  View,
-  TouchableOpacity,
-  Image,
-  Modal,
-  ScrollView
-} from "react-native";
+import { Text, View, TouchableOpacity, ScrollView } from "react-native";
 import React from "react";
 import { extractScreenStyle } from "./style";
 import { monthNames } from "../../support/monthNames";
+import { TopBar } from "../usables/top_bar/TopBar";
+import { BalanceView } from "../usables/balance_view/BalanceView";
+import { NeutralButton } from "../usables/buttons/neutral_button/NeutralButton";
 
 export const ExtractScreen = props => {
   return (
     <ScrollView>
       <View style={extractScreenStyle.container}>
         <View style={extractScreenStyle.cardView}>
-          <View style={extractScreenStyle.topBarView}>
-            <TouchableOpacity style={extractScreenStyle.btnBack}>
-              <Image
-                source={require("../../assets/back.png")}
-                style={extractScreenStyle.backIcon}
-              />
-            </TouchableOpacity>
-            <Text style={extractScreenStyle.cardTitle}>Extrato</Text>
-          </View>
-          <View style={extractScreenStyle.cardRowView}>
-            <View>
-              <Text style={extractScreenStyle.boldMediumText}>
-                Saldo em conta
-              </Text>
-              <Text style={extractScreenStyle.boldLargeText}>R$ 1.709,65</Text>
-            </View>
-            <View>
-              <TouchableOpacity style={extractScreenStyle.btnPrimaryNeutral}>
-                <Text style={extractScreenStyle.btnNeutralText}>
-                  Pagamentos
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={extractScreenStyle.btnPrimaryNeutral}>
-                <Text style={extractScreenStyle.btnNeutralText}>
-                  Transferências
-                </Text>
-              </TouchableOpacity>
+          <TopBar title="Extrato" />
+          <View style={extractScreenStyle.cardView}>
+            <BalanceView saldo={1709.64} />
+            <View style={extractScreenStyle.btnFiltrosView}>
+              <NeutralButton label="Pagamentos" onPress={() => {}} />
+              <NeutralButton label="Transferências" onPress={() => {}} />
             </View>
           </View>
           <View style={extractScreenStyle.periodoView}>

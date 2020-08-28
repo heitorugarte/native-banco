@@ -24,39 +24,6 @@ export const homeScreenStyle = StyleSheet.create({
     textShadowRadius: 10,
     color: "#11DD74"
   },
-  saldoView: {
-    flexDirection: "row",
-    alignItems: "center"
-  },
-  saldoLabelText: {
-    fontSize: 20,
-    margin: 5
-  },
-  saldoText: {
-    fontSize: 22,
-    fontWeight: "bold",
-    textShadowColor: "rgba(0, 0, 0, 0.1)",
-    textShadowOffset: { width: -1, height: 1 },
-    textShadowRadius: 5
-  },
-  btnHideSaldo: {
-    width: 64,
-    height: 32,
-    borderRadius: 10,
-    margin: 10,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#11DD74",
-    shadowColor: "rgba(0,0,0, .4)",
-    shadowOffset: { height: 1, width: 1 },
-    shadowOpacity: 1,
-    shadowRadius: 1,
-    elevation: 2
-  },
-  hideIcon: {
-    height: 32,
-    width: 32
-  },
   logoutIcon: {
     height: 23,
     width: 23

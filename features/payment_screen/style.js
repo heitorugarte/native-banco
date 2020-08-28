@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-export const transferScreenStyle = StyleSheet.create({
+export const paymentScreenStyle = StyleSheet.create({
   container: {
     width: "100%",
     height: "95%",
@@ -11,9 +11,8 @@ export const transferScreenStyle = StyleSheet.create({
   cardView: {
     width: "90%",
     borderRadius: 10,
-    borderWidth: 1,
     padding: 10,
-    margin: 10,
+    margin: 5,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -34,22 +33,35 @@ export const transferScreenStyle = StyleSheet.create({
     textAlign: "center",
     color: "#3B4A3F"
   },
-  modalContainer: {
-    width: "100%",
-    height: "100%",
-    backgroundColor: "rgba(0,0,0,0.5)",
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  modalView: {
-    backgroundColor: "#fff",
-    width: "90%",
-    borderRadius: 10,
-    padding: 10,
+  instructionText: {
+    fontSize: 16,
+    fontWeight: "bold",
     textAlign: "center",
-    justifyContent: "center",
-    alignContent: "center",
-    flexDirection: "column"
+    color: "#444444",
+    margin: 10
+  },
+  inputView: {
+    flexDirection: "row",
+    justifyContent: "space-between"
+  },
+  textInput: {
+    padding: 10,
+    width: "85%"
+  },
+  scanIcon: {
+    width: 48,
+    height: 48
+  },
+  fieldLabel: {
+    fontWeight: "bold"
+  },
+  fieldView: {
+    width: "90%",
+    margin: 1,
+    borderBottomWidth: 1,
+    borderColor: "#11DD74",
+    borderRadius: 10,
+    padding: 15
   },
   reviewView: {
     padding: 10
