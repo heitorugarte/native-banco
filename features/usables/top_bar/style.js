@@ -3,9 +3,10 @@ import { StyleSheet } from "react-native";
 export const topBarStyle = StyleSheet.create({
   topBarView: {
     flexDirection: "row",
-    alignItems: "center",
     width: "100%",
-    justifyContent: "center"
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 5
   },
   btnBack: {
     position: "absolute",

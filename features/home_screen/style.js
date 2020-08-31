@@ -1,8 +1,8 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, StatusBar as Statusbar } from "react-native";
 
 export const homeScreenStyle = StyleSheet.create({
   container: {
-    height: "96%",
+    paddingTop: Statusbar.currentHeight + 5,
     width: "100%",
     backgroundColor: "#00DF74",
     flexDirection: "column",
@@ -17,12 +17,13 @@ export const homeScreenStyle = StyleSheet.create({
   },
   greetingsText: {
     padding: 5,
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: "bold",
     textShadowColor: "rgba(0, 0, 0, 0.1)",
     textShadowOffset: { width: -1, height: 1 },
     textShadowRadius: 10,
-    color: "#11DD74"
+    color: "#11DD74",
+    textAlign: "center"
   },
   logoutIcon: {
     height: 23,
@@ -58,7 +59,7 @@ export const homeScreenStyle = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     padding: 10,
-    margin: 10,
+    margin: 5,
     width: "100%",
     borderWidth: 0.5,
     borderRadius: 10,

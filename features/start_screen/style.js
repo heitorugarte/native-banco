@@ -1,9 +1,10 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, StatusBar as Statusbar } from "react-native";
 
 export const startScreenStyle = StyleSheet.create({
   container: {
+    paddingTop: Statusbar.currentHeight + 5,
     width: "100%",
-    height: "95%",
+    height: "100%",
     backgroundColor: "#00DF74",
     flexDirection: "column",
     justifyContent: "space-between",

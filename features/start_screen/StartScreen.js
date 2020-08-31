@@ -1,8 +1,10 @@
-import { Text, View, TextInput, TouchableOpacity } from "react-native";
+import { Text, View, TextInput, TouchableOpacity, Alert } from "react-native";
 import React from "react";
 import { startScreenStyle } from "./style.js";
+import { connect } from "react-redux";
+import { accounts } from "../accounts";
 
-export const StartScreen = props => {
+const StartScreen = props => {
   return (
     <View style={startScreenStyle.container}>
       <View style={startScreenStyle.headerView}>
@@ -15,15 +17,43 @@ export const StartScreen = props => {
         <Text style={startScreenStyle.cardTitle}>Acessar Conta</Text>
         <TextInput
           style={startScreenStyle.loginInput}
+          value={props.fieldConta}
           placeholder="Conta..."
           keyboardType={"number-pad"}
+          onChange={value => {
+            props.dispatch({
+              type: "login/fieldConta",
+              conta: value.nativeEvent.text
+            });
+          }}
         ></TextInput>
         <TextInput
           style={startScreenStyle.loginInput}
+          value={props.fieldSenha}
           placeholder="Senha..."
           secureTextEntry={true}
+          onChange={value => {
+            props.dispatch({
+              type: "login/fieldSenha",
+              senha: value.nativeEvent.text
+            });
+          }}
         ></TextInput>
-        <TouchableOpacity style={startScreenStyle.btnPrimary}>
+        <TouchableOpacity
+          style={startScreenStyle.btnPrimary}
+          onPress={() => {
+            let usuario = authenticate(props.fieldConta, props.fieldSenha);
+            if (usuario) {
+              props.dispatch({
+                type: "login/authenticated",
+                conta: usuario
+              });
+              props.navigation.navigate("Home");
+            } else {
+              Alert.alert("Erro", "A conta ou senha informadas são inválidas.");
+            }
+          }}
+        >
           <Text style={startScreenStyle.btnPrimaryText}>Entrar</Text>
         </TouchableOpacity>
       </View>
@@ -39,3 +69,19 @@ export const StartScreen = props => {
     </View>
   );
 };
+
+function authenticate(conta, senha) {
+  let contaEncontrada = accounts.find(
+    item => item.conta === conta && item.senha === senha
+  );
+  return contaEncontrada;
+}
+
+const mapStartToProps = state => {
+  return {
+    fieldConta: state.fieldConta,
+    fieldSenha: state.fieldSenha
+  };
+};
+
+export default connect(mapStartToProps)(StartScreen);

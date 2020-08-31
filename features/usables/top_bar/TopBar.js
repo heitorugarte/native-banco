@@ -5,7 +5,10 @@ import { topBarStyle } from "./style";
 export const TopBar = props => {
   return (
     <View style={topBarStyle.topBarView}>
-      <TouchableOpacity style={topBarStyle.btnBack}>
+      <TouchableOpacity
+        style={topBarStyle.btnBack}
+        onPress={() => props.navigation.goBack()}
+      >
         <Image
           source={require("../../../assets/back.png")}
           style={topBarStyle.backIcon}

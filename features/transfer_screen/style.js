@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 export const transferScreenStyle = StyleSheet.create({
   container: {
     width: "100%",
-    height: "95%",
+    height: "100%",
     backgroundColor: "#00DF74",
     flexDirection: "column",
     alignItems: "center"
@@ -11,7 +11,6 @@ export const transferScreenStyle = StyleSheet.create({
   cardView: {
     width: "90%",
     borderRadius: 10,
-    borderWidth: 1,
     padding: 10,
     margin: 10,
     shadowColor: "#000",

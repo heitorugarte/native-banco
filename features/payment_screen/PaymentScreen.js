@@ -1,21 +1,33 @@
-import { Text, View, ScrollView, Modal } from "react-native";
+import {
+  Text,
+  View,
+  ScrollView,
+  Modal,
+  StatusBar as Statusbar
+} from "react-native";
 import React from "react";
 import { paymentScreenStyle } from "./style";
 import { TopBar } from "../usables/top_bar/TopBar";
-import { BalanceView } from "../usables/balance_view/BalanceView";
-import { DateInputField } from "../usables/field_labels/date_field/DateInputField";
+import BalanceView from "../usables/balance_view/BalanceView";
+import DateInputField from "../usables/field_labels/date_field/DateInputField";
 import { TextIconInputField } from "../usables/field_labels/text_icon_field/TextIconInputField";
 import { PositiveButton } from "../usables/buttons/positive_button/PositiveButton";
 import { NeutralButton } from "../usables/buttons/neutral_button/NeutralButton";
 import { AuxiliarButton } from "../usables/buttons/auxiliar_button/AuxiliarButton";
 import imgScan from "../../assets/pagarConta.png";
+import { connect } from "react-redux";
 
-export const PaymentScreen = props => {
+const PaymentScreen = props => {
   return (
-    <ScrollView>
+    <ScrollView
+      style={{
+        paddingTop: Statusbar.currentHeight,
+        backgroundColor: "#00DF74"
+      }}
+    >
       <View style={paymentScreenStyle.container}>
         <View style={paymentScreenStyle.cardView}>
-          <TopBar title="Pagamento" />
+          <TopBar title="Pagamento" navigation={props.navigation} />
         </View>
         <View style={paymentScreenStyle.cardView}>
           <BalanceView saldo={1709.64} />
@@ -29,12 +41,36 @@ export const PaymentScreen = props => {
             keyboardType="number-pad"
           />
           <DateInputField label="Data:" />
+          <PositiveButton
+            label="Pagar"
+            onPress={() => {
+              props.dispatch({
+                type: "modal/toggleComprovantePagamento"
+              });
+            }}
+          />
+          <NeutralButton
+            label="Cancelar"
+            onPress={() => props.navigation.goBack()}
+          />
         </View>
       </View>
-      <ModalComprovante visible={false} />
+      <ModalComprovante
+        visible={props.modalComprovantePagamento}
+        dispatch={props.dispatch}
+        navigation={props.navigation}
+      />
     </ScrollView>
   );
 };
+
+const mapPaymentToProps = state => {
+  return {
+    modalComprovantePagamento: state.modalComprovantePagamento
+  };
+};
+
+export default connect(mapPaymentToProps)(PaymentScreen);
 
 const ModalComprovante = props => {
   return (
@@ -80,7 +116,17 @@ const ModalComprovante = props => {
           </View>
         </View>
         <View style={paymentScreenStyle.cardView}>
-          <PositiveButton label="Concluir" onPress={() => {}} />
+          <PositiveButton
+            label="Concluir"
+            onPress={() => {
+              props.dispatch({
+                type: "modal/toggleComprovantePagamento"
+              });
+              {
+                props.navigation.goBack();
+              }
+            }}
+          />
           <AuxiliarButton label="Compartilhar" onPress={() => {}} />
         </View>
       </View>

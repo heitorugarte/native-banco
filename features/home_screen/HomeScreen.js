@@ -1,27 +1,49 @@
 import { Text, View, TouchableOpacity, Image, ScrollView } from "react-native";
 import React from "react";
 import { homeScreenStyle } from "./style.js";
-import { BalanceView } from "../usables/balance_view/BalanceView";
+import BalanceView from "../usables/balance_view/BalanceView";
+import { connect } from "react-redux";
 
-const components = [HeaderView, OperationsView, BottomView];
-
-export const HomeScreen = props => {
+const HomeScreen = props => {
   return (
-    <ScrollView>
+    <ScrollView
+      style={{
+        backgroundColor: "#00DF74"
+      }}
+    >
       <View style={homeScreenStyle.container}>
-        <HeaderView />
-        <OperationsView />
-        <BottomView />
+        <HeaderView
+          navigation={props.navigation}
+          contaLogada={props.contaLogada}
+        />
+        <OperationsView
+          navigation={props.navigation}
+          contaLogada={props.contaLogada}
+        />
+        <BottomView
+          navigation={props.navigation}
+          contaLogada={props.contaLogada}
+        />
       </View>
     </ScrollView>
   );
 };
 
+const mapHomeToProps = state => {
+  return {
+    contaLogada: state.contaLogada
+  };
+};
+
+export default connect(mapHomeToProps)(HomeScreen);
+
 const HeaderView = props => {
   return (
     <View style={homeScreenStyle.headerView}>
-      <Text style={homeScreenStyle.greetingsText}>Olá, usuário.</Text>
-      <BalanceView saldo={1709.64} />
+      <Text style={homeScreenStyle.greetingsText}>
+        Olá, {props.contaLogada.nome}.
+      </Text>
+      <BalanceView />
     </View>
   );
 };
@@ -30,7 +52,10 @@ const OperationsView = props => {
   return (
     <View style={homeScreenStyle.operationsView}>
       <Text style={homeScreenStyle.cardTitle}>Operações</Text>
-      <TouchableOpacity style={homeScreenStyle.operation}>
+      <TouchableOpacity
+        style={homeScreenStyle.operation}
+        onPress={() => props.navigation.navigate("Extract")}
+      >
         <Image
           source={require("../../assets/hideIcon.png")}
           style={homeScreenStyle.hideIcon}
@@ -40,7 +65,10 @@ const OperationsView = props => {
           Verifique suas transações como pagamentos, transferências e depósitos.
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity style={homeScreenStyle.operation}>
+      <TouchableOpacity
+        style={homeScreenStyle.operation}
+        onPress={() => props.navigation.navigate("Transfer")}
+      >
         <Image
           source={require("../../assets/transferencia.png")}
           style={homeScreenStyle.hideIcon}
@@ -50,7 +78,10 @@ const OperationsView = props => {
           Envie dinheiro para contas deste ou outros bancos, sem taxas!
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity style={homeScreenStyle.operation}>
+      <TouchableOpacity
+        style={homeScreenStyle.operation}
+        onPress={() => props.navigation.navigate("Payment")}
+      >
         <Image
           source={require("../../assets/pagarConta.png")}
           style={homeScreenStyle.hideIcon}
@@ -78,7 +109,12 @@ const BottomView = props => {
           seu perfil com as menores taxas de juros!
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity style={homeScreenStyle.operationSair}>
+      <TouchableOpacity
+        style={homeScreenStyle.operationSair}
+        onPress={() => {
+          props.navigation.navigate("Start");
+        }}
+      >
         <Text style={homeScreenStyle.operationTextSair}>Sair</Text>
       </TouchableOpacity>
     </View>

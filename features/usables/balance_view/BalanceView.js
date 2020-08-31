@@ -1,14 +1,30 @@
 import { Text, View, TouchableOpacity, Image, FlatList } from "react-native";
 import React from "react";
 import { balanceViewStyle } from "./style";
+import { connect } from "react-redux";
+import { currencyParser } from "../CurrencyParser";
 
-export const BalanceView = props => {
+const BalanceView = props => {
   return (
     <View style={balanceViewStyle.saldoView}>
       <Text style={balanceViewStyle.saldoLabelText}>Seu saldo:</Text>
       <View style={balanceViewStyle.valorView}>
-        <Text style={balanceViewStyle.saldoText}>R$ {props.saldo} </Text>
-        <TouchableOpacity style={balanceViewStyle.btnHideSaldo}>
+        {props.saldoVisivel ? (
+          <Text style={balanceViewStyle.saldoText}>
+            {currencyParser(props.contaLogada.saldo)}{" "}
+          </Text>
+        ) : (
+          <Text>------------------------</Text>
+        )}
+
+        <TouchableOpacity
+          style={balanceViewStyle.btnHideSaldo}
+          onPress={() => {
+            props.dispatch({
+              type: "saldo/toggleVisivel"
+            });
+          }}
+        >
           <Image
             source={require("../../../assets/hideIcon.png")}
             style={balanceViewStyle.hideIcon}
@@ -18,3 +34,12 @@ export const BalanceView = props => {
     </View>
   );
 };
+
+const mapBalanceToProps = state => {
+  return {
+    saldoVisivel: state.saldoVisivel,
+    contaLogada: state.contaLogada
+  };
+};
+
+export default connect(mapBalanceToProps)(BalanceView);

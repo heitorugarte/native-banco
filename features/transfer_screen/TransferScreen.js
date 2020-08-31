@@ -1,21 +1,33 @@
-import { Text, View, Modal, ScrollView } from "react-native";
+import {
+  Text,
+  View,
+  Modal,
+  ScrollView,
+  StatusBar as Statusbar
+} from "react-native";
 import React from "react";
 import { transferScreenStyle } from "./style.js";
 import { TopBar } from "../usables/top_bar/TopBar";
 import { TextInputField } from "../usables/field_labels/text_field/TextInputField";
 import { PickerInputField } from "../usables/field_labels/picker_field/PickerInputField";
-import { DateInputField } from "../usables/field_labels/date_field/DateInputField";
+import DateInputField from "../usables/field_labels/date_field/DateInputField";
 import { PositiveButton } from "../usables/buttons/positive_button/PositiveButton";
 import { NegativeButton } from "../usables/buttons/negative_button/NegativeButton";
 import { NeutralButton } from "../usables/buttons/neutral_button/NeutralButton";
 import { AuxiliarButton } from "../usables/buttons/auxiliar_button/AuxiliarButton";
+import { connect } from "react-redux";
 
-export const TransferScreen = props => {
+const TransferScreen = props => {
   return (
-    <ScrollView>
+    <ScrollView
+      style={{
+        paddingTop: Statusbar.currentHeight,
+        backgroundColor: "#00DF74"
+      }}
+    >
       <View style={transferScreenStyle.container}>
         <View style={transferScreenStyle.cardView}>
-          <TopBar title="Transferência" />
+          <TopBar title="Transferência" navigation={props.navigation} />
         </View>
         <View style={transferScreenStyle.cardView}>
           <PickerInputField
@@ -39,19 +51,46 @@ export const TransferScreen = props => {
         </View>
 
         <View style={transferScreenStyle.cardView}>
-          <PositiveButton label="Transferir" onPress={() => {}} />
-          <NegativeButton label="Cancelar" onPress={() => {}} />
+          <PositiveButton
+            label="Transferir"
+            onPress={() => {
+              props.dispatch({
+                type: "modal/toggleReviewTransferencia"
+              });
+            }}
+          />
+          <NeutralButton
+            label="Cancelar"
+            onPress={() => {
+              props.navigation.goBack();
+            }}
+          />
         </View>
-        <ModalReviewDetalhes visible={false} />
+        <ModalReviewDetalhes
+          visible={props.modalReviewTransferencia}
+          navigation={props.navigation}
+          dispatch={props.dispatch}
+        />
         <ModalComprovante
-          visible={false}
+          visible={props.modalComprovanteTransferencia}
           valor={1400}
           usuario={"Destinatário"}
+          navigation={props.navigation}
+          dispatch={props.dispatch}
         />
       </View>
     </ScrollView>
   );
 };
+
+const mapTransferToProps = state => {
+  return {
+    modalReviewTransferencia: state.modalReviewTransferencia,
+    modalComprovanteTransferencia: state.modalComprovanteTransferencia
+  };
+};
+
+export default connect(mapTransferToProps)(TransferScreen);
 
 const ModalReviewDetalhes = props => {
   return (
@@ -84,8 +123,23 @@ const ModalReviewDetalhes = props => {
                 {new Date().toDateString()}
               </Text>
             </View>
-            <PositiveButton label="Confirmar" onPress={() => {}} />
-            <NeutralButton label="Voltar" onPress={() => {}} />
+            <PositiveButton
+              label="Confirmar"
+              onPress={() => {
+                props.dispatch({
+                  type: "modal/toggleReviewTransferencia"
+                });
+                props.dispatch({
+                  type: "modal/toggleComprovanteTransferencia"
+                });
+              }}
+            />
+            <NeutralButton
+              label="Voltar"
+              onPress={() => {
+                props.navigation.goBack();
+              }}
+            />
           </View>
         </View>
       </View>
@@ -138,7 +192,15 @@ const ModalComprovante = props => {
           </View>
         </View>
         <View style={transferScreenStyle.cardView}>
-          <PositiveButton label="Concluir" onPress={() => {}} />
+          <PositiveButton
+            label="Concluir"
+            onPress={() => {
+              props.dispatch({
+                type: "modal/toggleComprovanteTransferencia"
+              });
+              props.navigation.goBack();
+            }}
+          />
           <AuxiliarButton label="Compartilhar" onPress={() => {}} />
         </View>
       </View>

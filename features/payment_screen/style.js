@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 export const paymentScreenStyle = StyleSheet.create({
   container: {
     width: "100%",
-    height: "95%",
+    height: "100%",
     backgroundColor: "#00DF74",
     flexDirection: "column",
     alignItems: "center"
