@@ -1,5 +1,13 @@
 import { StyleSheet, StatusBar as Statusbar } from "react-native";
 
+/**
+ * @author Heitor Ugarte / heitorsilveirafurb@gmail.com
+ */
+
+/**
+ * @constant
+ * @summary Object that stores the ExtractScreen's stylesheet.
+ */
 export const extractScreenStyle = StyleSheet.create({
   container: {
     paddingTop: Statusbar.currentHeight,
@@ -120,6 +128,13 @@ export const extractScreenStyle = StyleSheet.create({
     borderRightWidth: 1,
     borderRightColor: "red"
   },
+  entradaDataViewCredito: {
+    width: "15%",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRightWidth: 1,
+    borderRightColor: "#00DF74"
+  },
   entradaDataText: {
     fontWeight: "bold",
     color: "gray",
@@ -136,7 +151,15 @@ export const extractScreenStyle = StyleSheet.create({
     fontSize: 16,
     color: "#dd4444"
   },
+  entradaValorTextCredito: {
+    fontWeight: "bold",
+    fontSize: 16,
+    color: "#00DF74"
+  },
   entradaDescricaoText: {
+    textTransform: "uppercase"
+  },
+  entradaTipoText: {
     color: "gray",
     textTransform: "uppercase"
   }

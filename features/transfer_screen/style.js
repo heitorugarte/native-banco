@@ -1,5 +1,13 @@
 import { StyleSheet } from "react-native";
 
+/**
+ * @author Heitor Ugarte / heitorsilveirafurb@gmail.com
+ */
+
+/**
+ * @constant
+ * @summary Object that stores the TransferScreen's stylesheet.
+ */
 export const transferScreenStyle = StyleSheet.create({
   container: {
     width: "100%",

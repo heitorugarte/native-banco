@@ -10,6 +10,7 @@ export const TextInputField = props => {
         placeholder={props.placeholder ? props.placeholder : null}
         maxLength={props.maxLength ? props.maxLength : null}
         keyboardType={props.keyboardType ? props.keyboardType : null}
+        onChange={text => (props.onChange ? props.onChange(text) : null)}
       />
     </View>
   );

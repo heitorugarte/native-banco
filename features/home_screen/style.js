@@ -1,5 +1,13 @@
 import { StyleSheet, StatusBar as Statusbar } from "react-native";
 
+/**
+ * @author Heitor Ugarte / heitorsilveirafurb@gmail.com
+ */
+
+/**
+ * @constant
+ * @summary Object that stores HomeScreen's stylesheet.
+ */
 export const homeScreenStyle = StyleSheet.create({
   container: {
     paddingTop: Statusbar.currentHeight + 5,

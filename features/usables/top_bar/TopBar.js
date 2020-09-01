@@ -7,7 +7,10 @@ export const TopBar = props => {
     <View style={topBarStyle.topBarView}>
       <TouchableOpacity
         style={topBarStyle.btnBack}
-        onPress={() => props.navigation.goBack()}
+        onPress={() => {
+          props.navigation.goBack();
+          if (props.clear) props.clear();
+        }}
       >
         <Image
           source={require("../../../assets/back.png")}

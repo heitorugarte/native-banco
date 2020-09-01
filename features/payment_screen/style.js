@@ -1,5 +1,14 @@
 import { StyleSheet } from "react-native";
 
+
+/**
+ * @author Heitor Ugarte / heitorsilveirafurb@gmail.com
+ */
+
+/**
+ * @constant
+ * @summary Object that stores the PaymentScreen's stylesheet.
+ */
 export const paymentScreenStyle = StyleSheet.create({
   container: {
     width: "100%",

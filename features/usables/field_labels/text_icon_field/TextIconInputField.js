@@ -11,6 +11,7 @@ export const TextIconInputField = props => {
         <TextInput
           style={textIconStyle.textInput}
           keyboardType={props.keyboardType}
+          onChange={text => props.onChange(text)}
         />
         <TouchableOpacity style={textIconStyle.btnView}>
           <Image source={props.imgUrl} style={textIconStyle.imgIcon} />

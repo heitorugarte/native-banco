@@ -3,6 +3,7 @@ import React from "react";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { fieldStyle } from "../fieldStyle";
 import { connect } from "react-redux";
+import { formatarData } from "../../DateParser";
 
 const DateInputField = props => {
   return (
@@ -22,10 +23,15 @@ const DateInputField = props => {
           <DateTimePicker
             value={new Date()}
             display="default"
+            minimumDate={new Date()}
             onChange={value => {
+              let dataFormatada = formatarData(
+                new Date(value.nativeEvent.timestamp)
+              );
+              props.onChange(dataFormatada);
               props.dispatch({
                 type: "data/setData",
-                data: value
+                data: dataFormatada
               });
             }}
           />

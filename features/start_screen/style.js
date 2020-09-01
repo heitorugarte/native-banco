@@ -1,5 +1,13 @@
 import { StyleSheet, StatusBar as Statusbar } from "react-native";
 
+/**
+ * @author Heitor Ugarte / heitorsilveirafurb@gmail.com
+ */
+
+/**
+ * @constant
+ * @summary Objeto que armazena a stylesheet do componente StartScreen (tela de login)
+ */
 export const startScreenStyle = StyleSheet.create({
   container: {
     paddingTop: Statusbar.currentHeight + 5,

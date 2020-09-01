@@ -1,6 +1,15 @@
+/**
+ * @author Heitor Ugarte / heitorsilveirafurb@gmail.com
+ */
+
+/**
+ * @constant
+ * @summary Constant that holds some accounts to be used as a demonstration
+ * of the application.
+ */
 export const accounts = [
   {
-    conta: "1301750",
+    conta: "010203",
     senha: "12345",
     nome: "Heitor Ugarte",
     saldo: 1300,
@@ -8,12 +17,45 @@ export const accounts = [
       {
         data: "02/08",
         descricao: "Compra no shopping Neumarket",
-        valor: 120
+        valor: 120,
+        debito: true,
+        tipo: "pagamento"
       },
-      { data: "11/08", descricao: "Compra no McDonalds", valor: 19.9 },
-      { data: "12/08", descricao: "Compra na Renner", valor: 19.9 },
-      { data: "13/08", descricao: "Compra no site Submarino", valor: 249.9 },
-      { data: "15/08", descricao: "Uber", valor: 6.5 }
+      {
+        data: "11/08",
+        descricao: "Compra no McDonalds",
+        valor: 19.9,
+        debito: true,
+        tipo: "pagamento"
+      },
+      {
+        data: "12/08",
+        descricao: "Compra na Renner",
+        valor: 19.9,
+        debito: true,
+        tipo: "pagamento"
+      },
+      {
+        data: "13/08",
+        descricao: "Compra no site Submarino",
+        valor: 249.9,
+        debito: true,
+        tipo: "pagamento"
+      },
+      {
+        data: "15/08",
+        descricao: "Uber",
+        valor: 6.5,
+        debito: true,
+        tipo: "pagamento"
+      },
+      {
+        data: "17/08",
+        descricao: "Transferência de Pedro",
+        valor: 50,
+        debito: false,
+        tipo: "transferencia"
+      }
     ]
   },
   {
@@ -25,16 +67,38 @@ export const accounts = [
       {
         data: "01/08",
         descricao: "Compra em Cooper Supermercados",
-        valor: 80000
+        valor: 80000,
+        debito: true,
+        tipo: "pagamento"
       },
       {
         data: "03/08",
         descricao: "Compra em MercadoLivre",
-        valor: 65
+        valor: 65,
+        debito: true,
+        tipo: "pagamento"
       },
-      { data: "05/08", descricao: "Compra em tabacaria", valor: 19.9 },
-      { data: "08/08", descricao: "Compra na Steam", valor: 120 },
-      { data: "15/08", descricao: "Compra em Submarino", valor: 30.5 }
+      {
+        data: "05/08",
+        descricao: "Compra em tabacaria",
+        valor: 19.9,
+        debito: true,
+        tipo: "pagamento"
+      },
+      {
+        data: "08/08",
+        descricao: "Compra na Steam",
+        valor: 120,
+        debito: true,
+        tipo: "pagamento"
+      },
+      {
+        data: "15/08",
+        descricao: "Compra em Submarino",
+        valor: 30.5,
+        debito: true,
+        tipo: "pagamento"
+      }
     ]
   },
   {
@@ -45,17 +109,39 @@ export const accounts = [
     extrato: [
       {
         data: "04/08",
-        descricao: "Compra na tabacaria",
-        valor: 50
+        descricao: "Compra na Cooper",
+        valor: 50,
+        debito: true,
+        tipo: "pagamento"
       },
       {
         data: "06/08",
-        descricao: "Transferência para Daniel - Bozo",
-        valor: 50
+        descricao: "Transferência para Daniel",
+        valor: 50,
+        debito: true,
+        tipo: "transferencia"
       },
-      { data: "15/08", descricao: "Transferência para Bona", valor: 80 },
-      { data: "19/08", descricao: "Transferência para Zé", valor: 70 },
-      { data: "21/08", descricao: "Uber", valor: 9.5 }
+      {
+        data: "15/08",
+        descricao: "Transferência para André",
+        valor: 80,
+        debito: true,
+        tipo: "transferencia"
+      },
+      {
+        data: "19/08",
+        descricao: "Transferência para Zé",
+        valor: 70,
+        debito: true,
+        tipo: "transferencia"
+      },
+      {
+        data: "21/08",
+        descricao: "Uber",
+        valor: 9.5,
+        debito: true,
+        tipo: "pagamento"
+      }
     ]
   }
 ];

@@ -3,6 +3,7 @@ import { StyleSheet } from "react-native";
 export const neutralButtonStyle = StyleSheet.create({
   btnNeutral: {
     height: 48,
+    width: 125,
     borderRadius: 10,
     padding: 5,
     margin: 10,
@@ -16,7 +17,7 @@ export const neutralButtonStyle = StyleSheet.create({
     elevation: 2
   },
   btnNeutralText: {
-    fontSize: 18,
+    fontSize: 15,
     color: "black",
     fontWeight: "bold"
   }

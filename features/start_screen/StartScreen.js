@@ -2,8 +2,20 @@ import { Text, View, TextInput, TouchableOpacity, Alert } from "react-native";
 import React from "react";
 import { startScreenStyle } from "./style.js";
 import { connect } from "react-redux";
-import { accounts } from "../accounts";
+import { authenticate } from "../api";
 
+
+/**
+ * @author Heitor Ugarte / heitorsilveirafurb@gmail.com
+ */
+
+/**
+ * @constant
+ * @function StartScreen
+ * @summary Function responsible for returning the StartScreen component, which handles the log in process.
+ * The sign up button (Cadastrar) and it's functionalities have not been implemented as of now.
+ * @param {Object} props
+ */
 const StartScreen = props => {
   return (
     <View style={startScreenStyle.container}>
@@ -70,13 +82,12 @@ const StartScreen = props => {
   );
 };
 
-function authenticate(conta, senha) {
-  let contaEncontrada = accounts.find(
-    item => item.conta === conta && item.senha === senha
-  );
-  return contaEncontrada;
-}
-
+/**
+ * @constant
+ * @function mapStartToProps
+ * @summary Function responsible for mapping which props the StartScreen component must receive from redux's store.
+ * @param {Object} state
+ */
 const mapStartToProps = state => {
   return {
     fieldConta: state.fieldConta,
@@ -84,4 +95,9 @@ const mapStartToProps = state => {
   };
 };
 
+/**
+ * @function connect
+ * @summary Connects the StartScreen component to the redux's store to manage it's state and exports it as a default module.
+ * @exports StartScreen
+ */
 export default connect(mapStartToProps)(StartScreen);
