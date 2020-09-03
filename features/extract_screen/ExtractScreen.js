@@ -2,12 +2,10 @@ import { Text, View, TouchableOpacity, ScrollView } from "react-native";
 import React from "react";
 import { currencyParser } from "../usables/CurrencyParser";
 import { extractScreenStyle } from "./style";
-import { monthNames } from "../../support/monthNames";
 import { TopBar } from "../usables/top_bar/TopBar";
 import BalanceView from "../usables/balance_view/BalanceView";
 import { NeutralButton } from "../usables/buttons/neutral_button/NeutralButton";
 import { connect } from "react-redux";
-
 
 /**
  * @author Heitor Ugarte / heitorsilveirafurb@gmail.com
@@ -64,65 +62,126 @@ const ExtractScreen = props => {
             </ScrollView>
           </View>
           <View style={extractScreenStyle.periodoView}>
-            <TouchableOpacity style={extractScreenStyle.btPeriodo}>
+            <TouchableOpacity
+              style={extractScreenStyle.btPeriodo}
+              onPress={() => {
+                props.dispatch({
+                  type: "extrato/setPeriodo",
+                  periodo: 7
+                });
+              }}
+            >
               <Text>7 dias</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={extractScreenStyle.btPeriodo}>
+            <TouchableOpacity
+              style={extractScreenStyle.btPeriodo}
+              onPress={() => {
+                props.dispatch({
+                  type: "extrato/setPeriodo",
+                  periodo: 15
+                });
+              }}
+            >
               <Text>15 dias</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={extractScreenStyle.btPeriodo}>
+            <TouchableOpacity
+              style={extractScreenStyle.btPeriodo}
+              onPress={() => {
+                props.dispatch({
+                  type: "extrato/setPeriodo",
+                  periodo: 30
+                });
+              }}
+            >
               <Text>30 dias</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={extractScreenStyle.btPeriodo}>
+            <TouchableOpacity
+              style={extractScreenStyle.btPeriodo}
+              onPress={() => {
+                props.dispatch({
+                  type: "extrato/setPeriodo",
+                  periodo: 0
+                });
+              }}
+            >
               <Text>Todos</Text>
             </TouchableOpacity>
           </View>
         </View>
         <View style={extractScreenStyle.cardView}>
           <Text style={extractScreenStyle.periodoDisplay}>
-            Todas as suas transações
+            {props.extratoTitle}
           </Text>
           <View style={extractScreenStyle.extratoView}>
-            {props.tipoDeExtrato === "todos"
-              ? props.contaLogada.extrato.map(item => {
-                  return (
-                    <EntradaExtrato
-                      data={item.data}
-                      valor={item.valor}
-                      descricao={item.descricao}
-                      debito={item.debito}
-                      tipo={item.tipo}
-                      key={
-                        item.descricao +
-                        item.valor.toString() +
-                        item.data.toString()
-                      }
-                    />
-                  );
-                })
-              : props.contaLogada.extrato.map(item => {
-                  if (item.tipo === props.tipoDeExtrato)
+            {props.contaLogada.extrato
+              .filter(item => {
+                if (props.periodo !== 0) {
+                  if (
+                    item.tipo === props.tipoDeExtrato ||
+                    props.tipoDeExtrato === "todos"
+                  ) {
                     return (
-                      <EntradaExtrato
-                        data={item.data}
-                        valor={item.valor}
-                        descricao={item.descricao}
-                        debito={item.debito}
-                        tipo={item.tipo}
-                        key={
-                          item.descricao +
-                          item.valor.toString() +
-                          item.data.toString()
-                        }
-                      />
+                      getTimestamp(item.data) >
+                      getTimestampPeriodo(props.periodo)
                     );
-                })}
+                  } else return false;
+                } else {
+                  if (
+                    props.tipoDeExtrato === "todos" ||
+                    item.tipo === props.tipoDeExtrato
+                  )
+                    return true;
+                  return false;
+                }
+              })
+              .map(item => {
+                return (
+                  <EntradaExtrato
+                    data={item.data}
+                    valor={item.valor}
+                    descricao={item.descricao}
+                    debito={item.debito}
+                    tipo={item.tipo}
+                    key={
+                      item.descricao +
+                      item.valor.toString() +
+                      item.data.toString()
+                    }
+                  />
+                );
+              })}
           </View>
         </View>
       </View>
     </ScrollView>
   );
 };
+
+/**
+ * @function getTimestamp
+ * @summary Function responsible for returning a timestamp based on the string date passed as a parameter.
+ * @param {String} dateString
+ */
+function getTimestamp(dateString) {
+  let mes = dateString.split("/")[1];
+  let dia = dateString.split("/")[0];
+  let data = new Date(
+    new Date().getFullYear().toString() + "-" + mes + "-" + dia
+  );
+  return data.getTime();
+}
+
+/**
+ * @function getTimestampPeriodo
+ * @summary Function responsible for returning a timestamp used as a threshold to limit which statements should be shown.
+ * A new date object is created and has the amount of days (period) deducted.
+ * @param {Number} dias
+ */
+function getTimestampPeriodo(dias) {
+  let data = new Date();
+  data.setDate(data.getDate() - dias);
+  return data.getTime();
+}
 
 /**
  * @constant
@@ -133,7 +192,9 @@ const ExtractScreen = props => {
 const mapExtractToProps = state => {
   return {
     contaLogada: state.contaLogada,
-    tipoDeExtrato: state.tipoDeExtrato
+    tipoDeExtrato: state.tipoDeExtrato,
+    periodo: state.periodo,
+    extratoTitle: state.extratoTitle
   };
 };
 

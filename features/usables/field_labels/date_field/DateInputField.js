@@ -5,6 +5,19 @@ import { fieldStyle } from "../fieldStyle";
 import { connect } from "react-redux";
 import { formatarData } from "../../DateParser";
 
+/**
+ * @author Heitor Ugarte / heitorsilveirafurb@gmail.com
+ */
+
+/**
+ * @constant
+ * @function DateInputField
+ * @summary Function responsible for returning a Date Input Field to be used anywhere in the project.
+ * To customize the component the following props need to be informed upon calling it:
+ *  label: text to be displayed as a label on the field
+ *  onChange: function to be called when a date is selected
+ * @param {Object} props
+ */
 const DateInputField = props => {
   return (
     <View style={fieldStyle.fieldView}>

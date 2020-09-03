@@ -24,6 +24,8 @@ export default function reducer(
     modalComprovanteTransferencia: false,
     modalComprovantePagamento: false,
     tipoDeExtrato: "todos",
+    extratoTitle: "Todas as suas transações",
+    periodo: 0,
     dadosTransferencia: {
       identificador: "",
       favorecido: "",
@@ -104,6 +106,17 @@ export default function reducer(
       return {
         ...state,
         tipoDeExtrato: "todos"
+      };
+    case "extrato/setPeriodo":
+      let novoPeriodo = action.periodo;
+      let novoTitulo;
+      novoPeriodo === 0
+        ? (novoTitulo = "Todas as suas transações")
+        : (novoTitulo = "Suas transações dos ultimos " + novoPeriodo + " dias");
+      return {
+        ...state,
+        periodo: novoPeriodo,
+        extratoTitle: novoTitulo
       };
     case "saldo/subtrair":
       let contaClone = { ...state.contaLogada };

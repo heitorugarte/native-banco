@@ -1,5 +1,13 @@
 import { StyleSheet } from "react-native";
 
+/**
+ * @author Heitor Ugarte / heitorsilveirafurb@gmail.com
+ */
+
+/**
+ * @constant
+ * @summary Object that stores the PositiveButton's stylesheet.
+ */
 export const positiveButtonStyle = StyleSheet.create({
   btnPositive: {
     height: 48,

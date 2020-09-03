@@ -1,5 +1,13 @@
 import { StyleSheet } from "react-native";
 
+/**
+ * @author Heitor Ugarte / heitorsilveirafurb@gmail.com
+ */
+
+/**
+ * @constant
+ * @summary Object that stores the NeutralButton's stylesheet.
+ */
 export const neutralButtonStyle = StyleSheet.create({
   btnNeutral: {
     height: 48,

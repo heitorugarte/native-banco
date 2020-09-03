@@ -4,7 +4,6 @@ import { startScreenStyle } from "./style.js";
 import { connect } from "react-redux";
 import { authenticate } from "../api";
 
-
 /**
  * @author Heitor Ugarte / heitorsilveirafurb@gmail.com
  */

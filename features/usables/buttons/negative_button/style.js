@@ -1,5 +1,13 @@
 import { StyleSheet } from "react-native";
 
+/**
+ * @author Heitor Ugarte / heitorsilveirafurb@gmail.com
+ */
+
+/**
+ * @constant
+ * @summary Object that stores the NegativeButton's stylesheet.
+ */
 export const negativeButtonStyle = StyleSheet.create({
   btnNegative: {
     height: 48,

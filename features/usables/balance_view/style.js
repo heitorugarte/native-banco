@@ -1,5 +1,13 @@
 import { StyleSheet } from "react-native";
 
+/**
+ * @author Heitor Ugarte / heitorsilveirafurb@gmail.com
+ */
+
+/**
+ * @constant
+ * @summary Object that stores the BalanceView's stylesheet.
+ */
 export const balanceViewStyle = StyleSheet.create({
   saldoView: {
     flexDirection: "column",
@@ -21,7 +29,7 @@ export const balanceViewStyle = StyleSheet.create({
     fontWeight: "bold",
     textShadowColor: "rgba(0, 0, 0, 0.1)",
     textShadowOffset: { width: -1, height: 1 },
-    textShadowRadius: 5,
+    textShadowRadius: 5
   },
   btnHideSaldo: {
     width: 64,

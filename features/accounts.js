@@ -15,42 +15,42 @@ export const accounts = [
     saldo: 1300,
     extrato: [
       {
-        data: "02/08",
+        data: "02/09",
         descricao: "Compra no shopping Neumarket",
         valor: 120,
         debito: true,
         tipo: "pagamento"
       },
       {
-        data: "11/08",
+        data: "28/08",
         descricao: "Compra no McDonalds",
         valor: 19.9,
         debito: true,
         tipo: "pagamento"
       },
       {
-        data: "12/08",
+        data: "26/08",
         descricao: "Compra na Renner",
         valor: 19.9,
         debito: true,
         tipo: "pagamento"
       },
       {
-        data: "13/08",
+        data: "21/08",
         descricao: "Compra no site Submarino",
         valor: 249.9,
         debito: true,
         tipo: "pagamento"
       },
       {
-        data: "15/08",
+        data: "19/08",
         descricao: "Uber",
         valor: 6.5,
         debito: true,
         tipo: "pagamento"
       },
       {
-        data: "17/08",
+        data: "01/08",
         descricao: "Transferência de Pedro",
         valor: 50,
         debito: false,
@@ -131,6 +131,221 @@ export const accounts = [
       {
         data: "19/08",
         descricao: "Transferência para Zé",
+        valor: 70,
+        debito: true,
+        tipo: "transferencia"
+      },
+      {
+        data: "21/08",
+        descricao: "Uber",
+        valor: 9.5,
+        debito: true,
+        tipo: "pagamento"
+      }
+    ]
+  },
+  {
+    conta: "1025002",
+    senha: "12345",
+    nome: "Álick Veras",
+    saldo: 1900,
+    extrato: [
+      {
+        data: "04/08",
+        descricao: "Compra na Cooper",
+        valor: 50,
+        debito: true,
+        tipo: "pagamento"
+      },
+      {
+        data: "06/08",
+        descricao: "Transferência para Zobo",
+        valor: 50,
+        debito: true,
+        tipo: "transferencia"
+      },
+      {
+        data: "15/08",
+        descricao: "Transferência para Bona",
+        valor: 80,
+        debito: true,
+        tipo: "transferencia"
+      },
+      {
+        data: "19/08",
+        descricao: "Transferência para Pedrão 3 Dígitos",
+        valor: 70,
+        debito: true,
+        tipo: "transferencia"
+      },
+      {
+        data: "21/08",
+        descricao: "Uber",
+        valor: 9.5,
+        debito: true,
+        tipo: "pagamento"
+      }
+    ]
+  },
+  {
+    conta: "1013005",
+    senha: "12345",
+    nome: "Vitor Calvette",
+    saldo: 2100,
+    extrato: [
+      {
+        data: "04/08",
+        descricao: "Compra na Cooper",
+        valor: 50,
+        debito: true,
+        tipo: "pagamento"
+      },
+      {
+        data: "06/08",
+        descricao: "Transferência para Pedrão",
+        valor: 50,
+        debito: true,
+        tipo: "transferencia"
+      },
+      {
+        data: "15/08",
+        descricao: "Transferência para Mãe",
+        valor: 80,
+        debito: true,
+        tipo: "transferencia"
+      },
+      {
+        data: "19/08",
+        descricao: "Transferência para Pedrão 3 Dígitos",
+        valor: 70,
+        debito: true,
+        tipo: "transferencia"
+      },
+      {
+        data: "21/08",
+        descricao: "Uber",
+        valor: 9.5,
+        debito: true,
+        tipo: "pagamento"
+      }
+    ]
+  },
+  {
+    conta: "1074002",
+    senha: "12345",
+    nome: "João Vitor",
+    saldo: 1400,
+    extrato: [
+      {
+        data: "04/08",
+        descricao: "Compra na Cooper",
+        valor: 50,
+        debito: true,
+        tipo: "pagamento"
+      },
+      {
+        data: "06/08",
+        descricao: "Transferência para Alickzera",
+        valor: 50,
+        debito: true,
+        tipo: "transferencia"
+      },
+      {
+        data: "15/08",
+        descricao: "Transferência para Jenni",
+        valor: 80,
+        debito: true,
+        tipo: "transferencia"
+      },
+      {
+        data: "19/08",
+        descricao: "Transferência para Pedrão 3 Dígitos",
+        valor: 70,
+        debito: true,
+        tipo: "transferencia"
+      },
+      {
+        data: "21/08",
+        descricao: "Uber",
+        valor: 9.5,
+        debito: true,
+        tipo: "pagamento"
+      }
+    ]
+  },
+  {
+    conta: "1083012",
+    senha: "12345",
+    nome: "Renan Melo",
+    saldo: 400,
+    extrato: [
+      {
+        data: "04/08",
+        descricao: "Compra na Cooper",
+        valor: 50,
+        debito: true,
+        tipo: "pagamento"
+      },
+      {
+        data: "06/08",
+        descricao: "Transferência para Alickzera",
+        valor: 50,
+        debito: true,
+        tipo: "transferencia"
+      },
+      {
+        data: "15/08",
+        descricao: "Transferência para Renata",
+        valor: 80,
+        debito: true,
+        tipo: "transferencia"
+      },
+      {
+        data: "19/08",
+        descricao: "Transferência para Pedrão 3 Dígitos",
+        valor: 70,
+        debito: true,
+        tipo: "transferencia"
+      },
+      {
+        data: "21/08",
+        descricao: "Uber",
+        valor: 9.5,
+        debito: true,
+        tipo: "pagamento"
+      }
+    ]
+  },
+  {
+    conta: "1184052",
+    senha: "12345",
+    nome: "André Scharf",
+    saldo: 18000,
+    extrato: [
+      {
+        data: "04/08",
+        descricao: "Compra na Cooper",
+        valor: 50,
+        debito: true,
+        tipo: "pagamento"
+      },
+      {
+        data: "06/08",
+        descricao: "Transferência para Alickzera",
+        valor: 50,
+        debito: true,
+        tipo: "transferencia"
+      },
+      {
+        data: "15/08",
+        descricao: "Transferência para Lams",
+        valor: 80,
+        debito: true,
+        tipo: "transferencia"
+      },
+      {
+        data: "19/08",
+        descricao: "Transferência para Pedrão 3 Dígitos",
         valor: 70,
         debito: true,
         tipo: "transferencia"

@@ -4,6 +4,17 @@ import { balanceViewStyle } from "./style";
 import { connect } from "react-redux";
 import { currencyParser } from "../CurrencyParser";
 
+/**
+ * @author Heitor Ugarte / heitorsilveirafurb@gmail.com
+ */
+
+/**
+ * @constant
+ * @function BalanceView
+ * @summary Function responsible for returning the balance component that shows the amount of money the user
+ * has in the account as well as a button to hide or show the value.
+ * @param {Object} props
+ */
 const BalanceView = props => {
   return (
     <View style={balanceViewStyle.saldoView}>
@@ -35,6 +46,12 @@ const BalanceView = props => {
   );
 };
 
+/**
+ * @constant
+ * @function mapBalanceToProps
+ * @summary Function responsible for mapping which props the BalanceView component must receive from redux's store.
+ * @param {Object} state
+ */
 const mapBalanceToProps = state => {
   return {
     saldoVisivel: state.saldoVisivel,
@@ -42,4 +59,9 @@ const mapBalanceToProps = state => {
   };
 };
 
+/**
+ * @function connect
+ * @summary Connects the BalanceView component to the redux to manage it's state and exports it as a default module.
+ * @exports BalanceView
+ */
 export default connect(mapBalanceToProps)(BalanceView);

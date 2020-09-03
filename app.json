@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "native-banco",
-    "slug": "native-banco",
+    "name": "BizuBank",
+    "slug": "BizuBank",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -13,14 +13,18 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.heitorugarte.bizubank",
+      "buildNumber": "1.0.0"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "android": {
+      "package": "com.heitorugarte.bizubank",
+      "versionCode": 1
     }
   }
 }
